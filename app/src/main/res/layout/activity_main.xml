@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/tvTitle"
+        android:text="Shuffle"/>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:numColumns="3"
+        android:id="@+id/gridView"></GridView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp" android:id="@+id/restart"
+        android:text="Restart Game" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp" android:id="@+id/btn_next"
+        android:text="Next" />
+</LinearLayout>
