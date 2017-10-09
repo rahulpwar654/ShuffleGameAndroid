@@ -15,7 +15,7 @@ import com.rahulp.shufflegame.util.ScalingUtilities;
 public class ImagePickerActivity extends AppCompatActivity {
     private Button next;
     private CustomImageView imgmain;
-    Bitmap mainImageBitmap;
+    public static Bitmap mainImageBitmap;
     public static final int PICK_IMAGE = 1;
 
 
@@ -32,10 +32,15 @@ public class ImagePickerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 pickImage();
+            }
+        });
 
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+               startActivity(new Intent(ImagePickerActivity.this,ShuffleImageActivity.class));
             }
         });
 
@@ -68,13 +73,12 @@ public class ImagePickerActivity extends AppCompatActivity {
 
             final Bundle extras = data.getExtras();
             if (extras != null) {
-
-
                 try {
+                    mainImageBitmap=null;
                     //Get image
-                    mainImageBitmap = extras.getParcelable("data");
+                    Bitmap pickedImage = extras.getParcelable("data");
 
-                    mainImageBitmap =ScalingUtilities.createScaledBitmap(mainImageBitmap,imgmain.getEdgeSize(),imgmain.getEdgeSize(), ScalingUtilities.ScalingLogic.FIT);
+                    mainImageBitmap =ScalingUtilities.createScaledBitmap(pickedImage,imgmain.getEdgeSize(),imgmain.getEdgeSize(), ScalingUtilities.ScalingLogic.FIT);
                     //mainImageBitmap=Bitmap.createBitmap(mainImageBitmap,0,0,imgmain.getEdgeSize(),imgmain.getEdgeSize());
                     imgmain.setImageBitmap(mainImageBitmap);
 
@@ -94,4 +98,19 @@ public class ImagePickerActivity extends AppCompatActivity {
 
 
 
+
+    /**
+     * function findingNeighbors(myArray, i, j) {
+     var rowLimit = myArray.length-1;
+     var columnLimit = myArray[0].length-1;
+
+     for(var x = Math.max(0, i-1); x <= Math.min(i+1, rowLimit); x++) {
+     for(var y = Math.max(0, j-1); y <= Math.min(j+1, columnLimit); y++) {
+     if(x !== i || y !== j) {
+     console.log(myArray[x][y]);
+     }
+     }
+     }
+     }
+     */
 }
